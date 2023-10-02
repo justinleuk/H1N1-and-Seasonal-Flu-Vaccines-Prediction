@@ -1,77 +1,78 @@
-# Data Science Project: Vaccine Adoption Prediction
+# Predicting Flu Vaccination Probability for Public Health Optimization
 
-## Project Overview
+## Introduction
 
-This data science project aims to predict the adoption of H1N1 and Seasonal vaccines using a dataset of . The project includes several stages, such as Exploratory Data Analysis (EDA), Data Preprocessing, Feature Selection, Feature Engineering, and Model Selection.
+Mass vaccination is considered one of the most effective public health measures to control infectious diseases during an outbreak. However, vaccination rates can vary widely across different populations, and vaccine hesitancy is a growing concern that can hinder vaccination rates. This project aims to answer key questions:
+
+1. How likely are individuals of different age groups to get vaccinated to assist public health officials in optimal vaccination allocation and distribution?
+2. What is the receptiveness of vaccination from individuals of varying income levels for effective public health intervention strategies?
+
+To address these questions, we analyze and model a dataset from the National 2009 H1N1 Flu Survey to predict the probability of flu vaccination of individuals during a pandemic, with the goal of optimizing vaccination allocation and distribution.
+
+## Dataset Overview
+
+- Dataset Size: 26,707 data samples
+- Features: 35 categorical features, including individuals' social, economic, and demographic backgrounds, as well as opinions on illness risks and vaccine effectiveness.
+
+Based on the dataset's descriptive statistics, the overall vaccination rate for the H1N1 and seasonal flu is 21.2% and 46.6%, respectively. This indicates a heavily imbalanced distribution of H1N1 vaccination, which could lead to overfitting of the model. Examining vaccination rates by age group, individuals aged 65 and above have the highest vaccination rates at 11.7% and 34.8% for H1N1 and seasonal vaccines, respectively. Moreover, the seasonal vaccination rate has a balanced distribution across different income levels. However, the H1N1 vaccination rate is imbalanced across income levels, with the highest percentage of unvaccinated individuals at 76.9% for the below $75,000, above poverty income level group.
+
+These statistics suggest that age group and income level are important factors affecting vaccination rates, which can be used to identify priority groups and improve accessibility to vaccines.
+
+## Project Sections
+
+### Exploratory Data Analysis (EDA)
+
+- Basic EDA
+- Convert to object
+- Find unique values in each feature
+- Visualize the distribution
+- Finding total null values
+- Sort null values in ascending order
+- Visualize the null values
+- Finding the percentage of null in each feature
+- Check if the dataset contains duplicates
+- Visualize unique values in each column
+- Check if null values are missing at random using a heatmap
+
+### Preprocessing
+
+- MNAR Imputation for employment_industry and employment_occupation
+- Remove columns with too many missing values
+- Remove rows with too many missing values
+- Feature encoding
+- Correlation matrix for all features
+- Split the dataset for single output
+- Calculate class weight for label 1 in the H1N1 dataset
+- H1N1 and Seasonal Vaccine Imputation using KNN with different weights
+- Encoding (try without removing rows and columns)
+- Null Imputation using KNN, Mode, MissForest, and Iterative Imputer
+
+### Feature Selection and Engineering
+
+- Feature selection using RFE, Chi Square, and SelectKBest
+- Dimensionality Reduction using PCA
+- Feature Selection using Lasso, RandomForest, and XGBoost
+- Print features extracted with each imputation method and feature selection method
+- Visualize features extracted
+- Find the frequency of features extracted by each model
+- Rank the feature importance in a graph
+- Fit each model to a baseline predictive model to see the AUROC score
+
+### Model Selection
+
+For H1N1:
+- Model training using RandomForestClassifier, LogisticRegression, XGBClassifier, SVM, CatBoost, and MLP with different hyperparameters
+- Calculate AUROC for H1N1 model
+
+For Seasonal:
+- Model training using RandomForestClassifier, LogisticRegression, XGBClassifier, SVM, CatBoost, and MLP with different hyperparameters
+- Calculate AUROC for Seasonal model
 
 ## Contributors
 
 - Justin
 - Fam
 
-## Sections
-
-- [Exploratory Data Analysis](#exploratory-data-analysis)
-- [Data Preprocessing](#data-preprocessing)
-- [Feature Selection and Engineering](#feature-selection-and-engineering)
-- [Model Selection](#model-selection)
-
-### Exploratory Data Analysis
-
-- Conducted basic EDA.
-- Converted some features to object data type.
-- Found unique values in each feature.
-- Visualized the distribution of features.
-- Identified NULL values.
-- Visualized the distribution of NULL values.
-- Checked if NULL values are missing at random using a heatmap.
-- Calculated the total number of NULL values.
-- Sorted NULL values in ascending order.
-- Visualized NULL values.
-- Found the percentage of NULL values in each feature.
-- Checked for duplicate entries.
-- Found unique values in each column.
-
-### Data Preprocessing
-
-- Conducted MNAR (Missing Not At Random) Imputation for 'employment_industry' and 'employment_occupation'.
-- Removed columns with too many missing values.
-- Removed rows with too many missing values.
-- Performed feature encoding.
-- Calculated class weights for label 1 in the H1N1 dataset.
-- Imputed H1N1 and Seasonal Vaccine data using KNN with different weights.
-- Encoded data without removing rows and columns.
-- Imputed NULL values using KNN, Mode, MissForest, and Iterative Imputer.
-
-### Feature Selection and Engineering
-
-- Conducted feature selection using RFE, Chi-Square, and SelectKBest.
-- Applied dimensionality reduction using PCA.
-- Performed feature selection using Lasso, RandomForest, and XGBoost.
-- Printed features extracted with each imputation and selection method.
-- Visualized features extracted.
-- Found the frequency of features extracted by each model.
-- Ranked feature importance in a graph.
-- Fitted each model to a baseline predictive model to calculate AUROC scores.
-
-### Model Selection
-
-- Trained H1N1 models using RandomForestClassifier, LogisticRegression, and XGBClassifier with different hyperparameters.
-- Trained Seasonal models using RandomForestClassifier, LogisticRegression, and XGBClassifier with different hyperparameters.
-- Trained H1N1 models using SVM, CatBoost, and MLP with different hyperparameters.
-- Calculated AUROC scores for both H1N1 and Seasonal models.
-
-## Dependencies
-
-- Python 3.7+
-- Libraries: pandas, numpy, scikit-learn, matplotlib, seaborn, xgboost, catboost
-
-## Usage
-
-1. Clone this repository.
-2. Set up your Python environment.
-3. Run the Jupyter notebooks in the respective sections to reproduce the analysis and models.
-
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
